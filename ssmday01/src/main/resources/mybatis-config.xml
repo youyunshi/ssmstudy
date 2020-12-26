@@ -46,7 +46,7 @@
     <!-- 加载 映射文件 -->
     <mappers>
         <mapper resource="com/ssm/po/UserMapper.xml"/>
-<!--        <mapper resource="com.ssm.po/UserMapper.xml"/>-->
+<!--        <mapper resource="com/ssm/mapper/UserMapper.xml"/>-->
 
         <!--通过resource方法一次加载一个映射文件 -->
         <!-- <mapper resource="mapper/UserMapper.xml"/> -->

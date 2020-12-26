@@ -22,7 +22,7 @@
 <!--                数据库驱动-->
                 <property name="driverClassName" value="${jdbc.driver}" />
 <!--                连接数据库的url-->
-                <property name="url" value="${jdbc.url}" />
+                <property name="url" value="${jdbc.url}?characterEncoding=UTF-8" />
 <!--                连接数据库的用户名-->
                 <property name="username" value="${jdbc.username}" />
 <!--                连接数据库的密码-->
@@ -53,11 +53,22 @@
         <property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
 
+<!--    Mapper代理开发（基于MapperFactoryBean）-->
+    <bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.ssm.mapper.UserMapper" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+
+    <!--    Mapper代理开发（基于MapperScannerConfigurer）-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.ssm.mapper" />
+    </bean>
+
 <!--        <context:annotation-config />-->
 
 <!--        <bean id="userDao" class="com.ssm.annotation.UserDaoImpl" />-->
 <!--        <bean id="userService" class="com.ssm.annotation.UserServiceImpl" />-->
 <!--        <bean id="userController" class="com.ssm.annotation.UserController" />-->
 
-<!--        <context:component-scan base-package="com.ssm.annotation" />-->
+        <context:component-scan base-package="com.ssm.service" />
 </beans>
